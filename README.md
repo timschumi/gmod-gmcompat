@@ -1,4 +1,6 @@
-# gmod-gmcompat
+# gmcompat (Gamemode Abstraction Library)
+
+This plugin is available on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2063714458).
 
 This is a support library providing abstraction functions independent of
 the currently used gamemode.
