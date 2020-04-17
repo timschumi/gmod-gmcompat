@@ -7,6 +7,14 @@ if gmcompat then return gmcompat end
 
 gmcompat = {}
 
+gmcompat.NAME_TTT		= "Trouble in Terrorist Town"
+gmcompat.NAME_TTT2		= "TTT2 (Advanced Update)"
+gmcompat.NAME_MURDER		= "Murder"
+
+gmcompat.ROUNDSTATE_LIVE	= 1
+gmcompat.ROUNDSTATE_NOTLIVE	= 0
+gmcompat.ROUNDSTATE_UNKNOWN	= -1
+
 local function log(msg)
 	print("[gmcompat] "..msg)
 end
@@ -32,18 +40,18 @@ end)
 function gmcompat.roundState()
 	if gmod.GetGamemode() == nil then
 		err("Gamemode isn't initialized yet!")
-		return -1
+		return gmcompat.ROUNDSTATE_UNKNOWN
 	end
 
-	if gmod.GetGamemode().Name == "Trouble in Terrorist Town" or
-	   gmod.GetGamemode().Name == "TTT2 (Advanced Update)" then
+	if gmod.GetGamemode().Name == gmcompat.NAME_TTT or
+	   gmod.GetGamemode().Name == gmcompat.NAME_TTT2 then
 		-- Round state 3 => Game is running
-		return ((GetRoundState() == 3) and 1 or 0)
+		return ((GetRoundState() == 3) and gmcompat.ROUNDSTATE_LIVE or gmcompat.ROUNDSTATE_NOTLIVE)
 	end
 
-	if gmod.GetGamemode().Name == "Murder" then
+	if gmod.GetGamemode().Name == gmcompat.NAME_MURDER then
 		-- Round state 1 => Game is running
-		return ((gmod.GetGamemode():GetRound() == 1) and 1 or 0)
+		return ((gmod.GetGamemode():GetRound() == 1) and gmcompat.ROUNDSTATE_LIVE or gmcompat.ROUNDSTATE_NOTLIVE)
 	end
 
 	-- Round state could not be determined
@@ -57,12 +65,12 @@ function gmcompat.roundStartHook()
 		return nil
 	end
 
-	if gmod.GetGamemode().Name == "Trouble in Terrorist Town" or
-	   gmod.GetGamemode().Name == "TTT2 (Advanced Update)" then
+	if gmod.GetGamemode().Name == gmcompat.NAME_TTT or
+	   gmod.GetGamemode().Name == gmcompat.NAME_TTT2 then
 		return "TTTBeginRound"
 	end
 
-	if gmod.GetGamemode().Name == "Murder" then
+	if gmod.GetGamemode().Name == gmcompat.NAME_MURDER then
 		return "OnStartRound"
 	end
 
@@ -77,12 +85,12 @@ function gmcompat.roundEndHook()
 		return nil
 	end
 
-	if gmod.GetGamemode().Name == "Trouble in Terrorist Town" or
-	   gmod.GetGamemode().Name == "TTT2 (Advanced Update)" then
+	if gmod.GetGamemode().Name == gmcompat.NAME_TTT or
+	   gmod.GetGamemode().Name == gmcompat.NAME_TTT2 then
 		return "TTTEndRound"
 	end
 
-	if gmod.GetGamemode().Name == "Murder" then
+	if gmod.GetGamemode().Name == gmcompat.NAME_MURDER then
 		return "OnEndRound"
 	end
 
