@@ -15,6 +15,18 @@ local function err(msg)
 	ErrorNoHalt("[gmcompat] [ERROR] "..msg.."\n")
 end
 
+
+local to_be_hooked = {}
+
+hook.Add("Initialize", "gmcompat_add_hooks", function()
+	for _, value in ipairs(to_be_hooked) do
+		gmcompat.hook(value["target"], value["prefix"], value["func"])
+	end
+	to_be_hooked = {}
+	hook.Remove("Initialize", "gmcompat_add_hooks")
+end)
+
+
 -- Returns 1 if the round is still on
 -- Returns 0 otherwise (or -1 if unsupported)
 function gmcompat.roundState()
@@ -84,6 +96,12 @@ end
 -- `func` is the function that should be executed
 function gmcompat.hook(target, prefix, func)
 	local hookname
+
+	-- If the Gamemode hasn't initialized yet, delay hooking until Initialization is done
+	if gmod.GetGamemode() == nil then
+		to_be_hooked[#to_be_hooked+1] = {["target"] = target, ["prefix"] = prefix, ["func"] = func}
+		return
+	end
 
 	if target == "start" then
 		hookname = gmcompat.roundStartHook()
