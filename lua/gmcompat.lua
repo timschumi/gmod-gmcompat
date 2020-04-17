@@ -2,6 +2,9 @@
 --
 -- Gamemode abstraction API for Garry's Mod
 
+-- Don't overwrite old version of gmcompat
+if gmcompat then return gmcompat end
+
 gmcompat = {}
 
 local function log(msg)
