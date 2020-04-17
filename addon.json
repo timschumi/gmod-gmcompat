@@ -1,0 +1,6 @@
+{
+	"title"		:	"gmcompat Gamemode Abstraction Library",
+	"type"		:	"ServerContent",
+	"tags"		:	[],
+	"ignore"	:	[".git*", "*.md", "LICENSE", "*.gma", "icon*"]
+}
