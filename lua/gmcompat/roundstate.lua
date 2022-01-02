@@ -16,6 +16,11 @@ function gmcompat.roundState()
 		return gmcompat.ROUNDSTATE_UNKNOWN
 	end
 
+	if gmod.GetGamemode().Name == gmcompat.NAME_SANDBOX then
+		-- Sandbox does not have a concept of rounds
+		return gmcompat.ROUNDSTATE_UNKNOWN
+	end
+
 	if gmod.GetGamemode().Name == gmcompat.NAME_TTT or
 	   gmod.GetGamemode().Name == gmcompat.NAME_TTT2 then
 		-- Round state 3 => Game is running
