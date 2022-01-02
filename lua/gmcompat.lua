@@ -12,6 +12,7 @@ gmcompat.NAME_SANDBOX		= "Sandbox"
 gmcompat.NAME_TTT		= "Trouble in Terrorist Town"
 gmcompat.NAME_TTT2		= "TTT2 (Advanced Update)"
 gmcompat.NAME_MURDER		= "Murder"
+gmcompat.NAME_DARKRP		= "DarkRP"
 
 function gmcompat._internal.log(msg)
 	print("[gmcompat] "..msg)

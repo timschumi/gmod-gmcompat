@@ -23,6 +23,10 @@ local hooklist = {
 		["start"] = "OnStartRound",
 		["end"] = "OnEndRound",
 	},
+	[gmcompat.NAME_DARKRP] = {
+		["start"] = "",
+		["end"] = "",
+	},
 }
 
 local to_be_hooked = {}

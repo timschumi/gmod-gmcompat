@@ -32,6 +32,11 @@ function gmcompat.roundState()
 		return ((gmod.GetGamemode():GetRound() == 1) and gmcompat.ROUNDSTATE_LIVE or gmcompat.ROUNDSTATE_NOTLIVE)
 	end
 
+	if gmod.GetGamemode().Name == gmcompat.NAME_DARKRP then
+		-- DarkRP does not have a concept of rounds, but the action is always on.
+		return gmcompat.ROUNDSTATE_LIVE
+	end
+
 	-- Round state could not be determined
 	err("roundState: Could not determine gamemode.")
 	return gmcompat.ROUNDSTATE_UNKNOWN
