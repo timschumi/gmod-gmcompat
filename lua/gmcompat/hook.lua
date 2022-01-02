@@ -8,6 +8,8 @@ local err = gmcompat._internal.err
 
 local hooklist = {
 	[gmcompat.NAME_SANDBOX] = {
+		["start"] = "",
+		["end"] = "",
 	},
 	[gmcompat.NAME_TTT] = {
 		["start"] = "TTTBeginRound",
@@ -54,6 +56,11 @@ function gmcompat.hook(target, prefix, func)
 
 	if hooklist[gm_name][target] == nil then
 		err("hook: Unknown hook '"..target.."' for gamemode '"..gm_name.."'")
+		return
+	end
+
+	-- Discard hook requests for known but non-existing hook names
+	if hooklist[gm_name][target] == "" then
 		return
 	end
 
