@@ -28,6 +28,7 @@ local hooklist = {
 		["end"] = "",
 	},
 }
+hooklist[gmcompat.NAME_TTT2_V1] = hooklist[gmcompat.NAME_TTT2]
 
 local to_be_hooked = {}
 

@@ -22,7 +22,8 @@ function gmcompat.roundState()
 	end
 
 	if gmod.GetGamemode().Name == gmcompat.NAME_TTT or
-	   gmod.GetGamemode().Name == gmcompat.NAME_TTT2 then
+	   gmod.GetGamemode().Name == gmcompat.NAME_TTT2 or
+	   gmod.GetGamemode().Name == gmcompat.NAME_TTT2_V1 then
 		-- Round state 3 => Game is running
 		return ((GetRoundState() == 3) and gmcompat.ROUNDSTATE_LIVE or gmcompat.ROUNDSTATE_NOTLIVE)
 	end

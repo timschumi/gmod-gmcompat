@@ -10,7 +10,8 @@ gmcompat._internal = {}
 
 gmcompat.NAME_SANDBOX		= "Sandbox"
 gmcompat.NAME_TTT		= "Trouble in Terrorist Town"
-gmcompat.NAME_TTT2		= "TTT2 (Advanced Update)"
+gmcompat.NAME_TTT2		= "TTT2"
+gmcompat.NAME_TTT2_V1		= "TTT2 (Advanced Update)"
 gmcompat.NAME_MURDER		= "Murder"
 gmcompat.NAME_DARKRP		= "DarkRP"
 
